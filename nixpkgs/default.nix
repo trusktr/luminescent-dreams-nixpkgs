@@ -1,7 +1,7 @@
 { system ? builtins.currentSystem }:
 let
   pkgs = import <nixpkgs> { inherit system; };
-  self = {
+  self = rec {
     rust_1_33_0 = pkgs.callPackage ./pkgs/dev/rust-1.33 {
       inherit pkgs;
     };
@@ -32,6 +32,15 @@ let
 
     vault_1_0_1 = pkgs.callPackage ./pkgs/devops/vault.nix {
       inherit (pkgs) fetchurl unzip stdenv;
+    };
+
+    fitnesstrax_0_0_1 = pkgs.callPackage ./pkgs/apps/fitnesstrax-0.0.1.nix {
+      inherit pkgs;
+    };
+
+    fitnesstrax_0_0_2 = pkgs.callPackage ./pkgs/apps/fitnesstrax-0.0.2.nix {
+      inherit pkgs;
+      ld = self;
     };
   };
 in self

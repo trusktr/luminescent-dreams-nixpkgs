@@ -19,11 +19,11 @@ in stdenv.mkDerivation rec {
   echo Installed packer to $out/bin/packer
   '';
 
-  src = pkgs.fetchurl {
+  src = fetchurl {
     url = "https://releases.hashicorp.com/packer/${version}/${package}";
     sha256 = checksum;
     name = package;
   };
 
-  buildInputs = [ pkgs.unzip ];
+  buildInputs = [ unzip ];
 }

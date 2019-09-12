@@ -19,11 +19,11 @@ in stdenv.mkDerivation rec {
   echo Installed terraform to $out/bin/terraform
   '';
 
-  src = pkgs.fetchurl {
+  src = fetchurl {
     url = "https://releases.hashicorp.com/terraform/${version}/${package}";
     sha256 = checksum;
     name = package;
   };
 
-  buildInputs = [ pkgs.unzip ];
+  buildInputs = [ unzip ];
 }

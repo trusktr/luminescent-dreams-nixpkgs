@@ -1,4 +1,4 @@
-{ futchurl, unzip, stdenv }:
+{ fetchurl, unzip, stdenv }:
 let
   ver = "1.0.1";
   package = if stdenv.system == "x86_64-linux" then "vault_${ver}_linux_amd64.zip"
@@ -19,11 +19,11 @@ in stdenv.mkDerivation rec {
   echo Installed vault to $out/bin/vault
   '';
 
-  src = pkgs.fetchurl {
+  src = fetchurl {
     url = "https://releases.hashicorp.com/vault/${version}/${package}";
     sha256 = checksum;
     name = package;
   };
 
-  buildInputs = [ pkgs.unzip ];
+  buildInputs = [ unzip ];
 }
