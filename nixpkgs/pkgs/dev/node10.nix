@@ -14,7 +14,7 @@ let
         else abort "unsupported platform";
 
 in mkDerivation rec {
-    name = "node";
+    name = "node-${ver}";
 
     src = fetchurl {
         url = "https://nodejs.org/download/release/v${ver}/node-v${ver}-${platform}.tar.gz";
