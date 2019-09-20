@@ -42,5 +42,10 @@ let
       inherit pkgs;
       ld = self;
     };
+
+    fitnesstrax_0_0_3 = pkgs.callPackage ./pkgs/apps/fitnesstrax-0.0.3.nix {
+      inherit pkgs;
+      ld = self;
+    };
   };
 in self
