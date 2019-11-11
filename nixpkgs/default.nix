@@ -6,6 +6,10 @@ let
       inherit pkgs;
     };
 
+    rust_1_39 = pkgs.callPackage ./pkgs/dev/rust-1.39 {
+      inherit pkgs;
+    };
+
     nodejs_9_10_0 = pkgs.callPackage ./pkgs/dev/node9.nix {
       inherit pkgs;
     };
