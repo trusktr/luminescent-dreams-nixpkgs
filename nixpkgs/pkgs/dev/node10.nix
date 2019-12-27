@@ -21,13 +21,22 @@ in mkDerivation rec {
         sha256 = pkgSha;
     };
 
+    buildInputs = [ pkgs.makeWrapper ];
+
     phases = [ "unpackPhase" "installPhase" "postInstallPhase" ];
+
+
     installPhase = ''
         mkdir -p $out
+        rm bin/npm
+        rm bin/npx
         cp -r * $out
     '';
 
     postInstallPhase = ''
+      patchShebangs $out
+      makeWrapper $out/lib/node_modules/npm/bin/npm-cli.js $out/bin/npm --prefix $bin/node
+
       if [ "${stdenv.system}" = "x86_64-linux" ]; then
         interp="$(cat $NIX_CC/nix-support/dynamic-linker)"
         patchelf --set-interpreter $interp \
