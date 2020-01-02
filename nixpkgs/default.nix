@@ -38,16 +38,17 @@ let
       inherit (pkgs) fetchurl unzip stdenv;
     };
 
-    fitnesstrax_0_0_1 = pkgs.callPackage ./pkgs/apps/fitnesstrax-0.0.1.nix {
-      inherit pkgs;
-    };
-
     fitnesstrax_0_0_2 = pkgs.callPackage ./pkgs/apps/fitnesstrax-0.0.2.nix {
       inherit pkgs;
       ld = self;
     };
 
     fitnesstrax_0_0_3 = pkgs.callPackage ./pkgs/apps/fitnesstrax-0.0.3.nix {
+      inherit pkgs;
+      ld = self;
+    };
+
+    fitnesstrax_0_0_4 = pkgs.callPackage ./pkgs/apps/fitnesstrax-0.0.4.nix {
       inherit pkgs;
       ld = self;
     };
